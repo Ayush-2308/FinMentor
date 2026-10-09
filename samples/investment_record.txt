@@ -1,0 +1,11 @@
+Investor: Rahul Sharma
+Portfolio Summary - as of Jan 31, 2026
+
+Fund Name                     Units    NAV      Current Value   Invested Value
+HDFC Flexi Cap Fund           245.67   412.50    1,01,338.75     95,000.00
+Axis Bluechip Fund            189.23   298.10     56,420.32      52,000.00
+SBI Small Cap Fund            98.45    356.80     35,146.76      30,000.00
+
+Total Current Value: 1,92,905.83
+Total Invested Value: 1,77,000.00
+Total Gain: 15,905.83 (8.99%)

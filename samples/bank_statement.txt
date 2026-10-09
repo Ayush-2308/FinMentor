@@ -1,0 +1,16 @@
+Account Holder: Rahul Sharma
+Account Number: XXXX-XXXX-4821
+Statement Period: Jan 1, 2026 – Jan 31, 2026
+
+Date        Description               Debit     Credit    Balance
+2026-01-02  Grocery Store - BigBasket  1,250.00            48,750.00
+2026-01-05  Salary Credit                        85,000.00 133,750.00
+2026-01-08  Electricity Bill           2,100.00            131,650.00
+2026-01-12  Grocery Store - DMart      1,800.00            129,850.00
+2026-01-15  Mutual Fund SIP            5,000.00            124,850.00
+2026-01-20  Restaurant - Swiggy          650.00            124,200.00
+2026-01-25  Grocery Store - BigBasket  1,100.00            123,100.00
+
+Total Grocery Spend (Jan): 4,150.00
+Total Credits: 85,000.00
+Total Debits: 10,900.00

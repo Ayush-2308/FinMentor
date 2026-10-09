@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05060a" />
+  <title>FinMentor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="stage" aria-hidden="true">
+    <span class="wash wash-l"></span>
+    <span class="wash wash-r"></span>
+    <span class="wash wash-c"></span>
+    <span class="grain"></span>
+  </div>
+
+  <main class="shell">
+    <section id="screen-welcome" class="view is-on">
+      <div class="center">
+        <button class="orb" id="welcome-orb" type="button" aria-label="FinMentor">
+          <span class="orbit orbit-a"></span>
+          <span class="orbit orbit-b"></span>
+          <span class="orbit orbit-c"></span>
+          <span class="nucleus">
+            <svg viewBox="0 0 72 72" width="56" height="56" aria-hidden="true">
+              <path d="M36 10 L52 36 L36 62 L20 36 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+              <circle cx="36" cy="36" r="4.5" fill="currentColor"/>
+              <path d="M36 18 V28 M36 44 V54 M22 36 H30 M42 36 H50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+        <p class="kicker">Your finance agent</p>
+        <h1>FinMentor</h1>
+        <p class="blurb">Ask about spend, cover, or returns. It answers from your files, and shows the passage it used.</p>
+        <button id="enter" class="cta" type="button">Get started</button>
+      </div>
+    </section>
+
+    <section id="screen-auth" class="view" hidden>
+      <header class="nav">
+        <button id="auth-back" class="ghost" type="button" aria-label="Back">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <span>Account</span>
+        <span></span>
+      </header>
+      <div class="center auth">
+        <div class="orb orb-s" aria-hidden="true">
+          <span class="orbit orbit-a"></span>
+          <span class="nucleus"></span>
+        </div>
+        <h2 id="auth-title">Create an account</h2>
+        <p id="auth-copy" class="blurb">Email or phone. We send a code before the agent opens.</p>
+        <div class="pills" role="tablist">
+          <button type="button" class="pill is-on" data-mode="signup">Sign up</button>
+          <button type="button" class="pill" data-mode="login">Log in</button>
+        </div>
+        <div class="pills thin" role="tablist">
+          <button type="button" class="pill is-on" data-channel="email">Email</button>
+          <button type="button" class="pill" data-channel="phone">Phone</button>
+        </div>
+        <form id="auth-form" class="form">
+          <label id="email-field">
+            <span>Email</span>
+            <input id="email" type="email" autocomplete="email" placeholder="you@email.com" />
+          </label>
+          <label id="phone-field" hidden>
+            <span>Phone</span>
+            <input id="phone" type="tel" autocomplete="tel" placeholder="+91 98xxxxxxx" />
+          </label>
+          <label>
+            <span>Password</span>
+            <input id="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required />
+          </label>
+          <p id="auth-error" class="err" role="alert"></p>
+          <p class="blurb left" id="demo-hint">Demo: demo@finmentor.app / Demo@12345</p>
+          <button id="auth-submit" class="cta" type="submit">Create account</button>
+          <button id="code-instead" class="link" type="button">Use a one-time code instead</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="screen-verify" class="view" hidden>
+      <header class="nav">
+        <button id="verify-back" class="ghost" type="button" aria-label="Back">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <span>Verify</span>
+        <span></span>
+      </header>
+      <div class="center auth">
+        <div class="orb orb-s" aria-hidden="true">
+          <span class="orbit orbit-a"></span>
+          <span class="nucleus"></span>
+        </div>
+        <h2>Enter the code</h2>
+        <p class="blurb">Sent to <strong id="verify-destination"></strong></p>
+        <form id="verify-form" class="form">
+          <div class="otp" id="otp">
+            <input inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="Digit 1" />
+            <input inputmode="numeric" maxlength="1" aria-label="Digit 2" />
+            <input inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+            <input inputmode="numeric" maxlength="1" aria-label="Digit 4" />
+            <input inputmode="numeric" maxlength="1" aria-label="Digit 5" />
+            <input inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+          </div>
+          <p id="verify-error" class="err" role="alert"></p>
+          <button id="verify-submit" class="cta" type="submit">Verify and open chat</button>
+          <button id="resend" class="link" type="button">Resend code</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="screen-chat" class="view" hidden>
+      <header class="nav chat-nav">
+        <button id="open-history" class="ghost" type="button" aria-label="Chat history">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 6h14M5 12h14M5 18h10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <span>FinMentor</span>
+        </div>
+        <button id="sign-out" class="link tiny" type="button">Sign out</button>
+      </header>
+
+      <div id="room" class="room">
+        <div class="home" id="home">
+          <button class="orb orb-home" id="chat-orb" type="button" aria-label="Talk to FinMentor">
+            <span class="orbit orbit-a"></span>
+            <span class="orbit orbit-b"></span>
+            <span class="orbit orbit-c"></span>
+            <span class="nucleus">
+              <svg viewBox="0 0 72 72" width="56" height="56" aria-hidden="true">
+                <path d="M36 10 L52 36 L36 62 L20 36 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="36" cy="36" r="4.5" fill="currentColor"/>
+              </svg>
+            </span>
+          </button>
+          <p class="prompt-line">What's in your files?</p>
+          <p class="blurb">Tap the agent to speak, or type below.</p>
+          <div id="suggestions" class="chips"></div>
+        </div>
+        <div id="transcript" class="feed" aria-live="polite"></div>
+      </div>
+
+      <div id="voice" class="voice" hidden>
+        <button class="orb orb-voice" id="voice-orb" type="button" aria-label="Stop listening">
+          <span class="orbit orbit-a"></span>
+          <span class="orbit orbit-b"></span>
+          <span class="orbit orbit-c"></span>
+          <span class="nucleus"></span>
+        </button>
+        <p id="voice-label">Listening</p>
+        <p id="live-speech" class="live"></p>
+        <div class="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <button id="stop-voice" class="cta ghost-cta" type="button">Cancel</button>
+      </div>
+
+      <form id="composer" class="dock">
+        <button id="open-files" class="round" type="button" aria-label="Your files">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <label class="sr-only" for="query">Message</label>
+        <textarea id="query" rows="1" maxlength="2000" placeholder="Ask FinMentor"></textarea>
+        <button id="mic" class="round mic" type="button" aria-label="Voice">
+          <svg viewBox="0 0 24 24" width="18" height="18"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+        <button id="send" class="round send" type="submit" aria-label="Send">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <div id="drawer" class="drawer" hidden>
+    <button id="drawer-scrim" class="scrim" type="button" aria-label="Close files"></button>
+    <aside class="sheet" role="dialog" aria-labelledby="files-title">
+      <header class="sheet-head">
+        <h2 id="files-title">Vault</h2>
+        <button id="close-files" class="ghost" type="button" aria-label="Close">✕</button>
+      </header>
+      <p class="blurb left">Bills, statements, policies. Pick a type, or Custom if it is not in the list.</p>
+      <ul id="document-list" class="docs"></ul>
+      <form id="upload-form" class="form">
+        <label>
+          <span>Add a file</span>
+          <input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.tif,.tiff,.txt,application/pdf,text/plain,image/*" />
+        </label>
+        <label>
+          <span>Type</span>
+          <select id="doc-type">
+            <option value="">No hint</option>
+            <option value="__custom__">Custom…</option>
+          </select>
+        </label>
+        <label id="custom-type-field" hidden>
+          <span>Custom type name</span>
+          <input id="custom-type" type="text" maxlength="60" placeholder="e.g. Society maintenance" />
+        </label>
+        <button id="upload-button" class="cta" type="submit">Upload and index</button>
+        <p id="upload-status" class="err" role="status"></p>
+      </form>
+    </aside>
+  </div>
+
+  <div id="history-drawer" class="drawer" hidden>
+    <button id="history-scrim" class="scrim" type="button" aria-label="Close history"></button>
+    <aside class="sheet" role="dialog" aria-labelledby="history-title">
+      <header class="sheet-head">
+        <h2 id="history-title">Chats</h2>
+        <button id="close-history" class="ghost" type="button" aria-label="Close">✕</button>
+      </header>
+      <button id="new-chat" class="cta" type="button">New chat</button>
+      <ul id="chat-list" class="docs chats"></ul>
+    </aside>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

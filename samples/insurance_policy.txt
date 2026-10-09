@@ -1,0 +1,19 @@
+Policy Holder: Rahul Sharma
+Policy Number: HI-2026-778899
+Policy Type: Health Insurance - Family Floater
+Sum Insured: Rs. 10,00,000
+
+Coverage Includes:
+- Hospitalization expenses (room rent, ICU, surgery)
+- Pre and post hospitalization (30 days before, 60 days after)
+- Daycare procedures (150+ listed procedures)
+- Ambulance charges up to Rs. 2,000 per hospitalization
+- Annual health checkup for all insured members
+
+Exclusions:
+- Cosmetic treatments
+- Pre-existing diseases (first 24 months)
+- Self-inflicted injuries
+
+Premium: Rs. 18,500/year
+Renewal Date: March 15, 2027

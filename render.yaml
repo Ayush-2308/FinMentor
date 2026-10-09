@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: finmentor
+    runtime: python
+    rootDir: finmentor
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: OCR_API_KEY
+        sync: false
+      - key: OCR_ENDPOINT
+        value: https://api.mistral.ai/v1/ocr
+      - key: OCR_PROVIDER
+        value: mistral
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_PROVIDER
+        value: gemini
+      - key: EMBEDDING_API_KEY
+        sync: false
+      - key: EMBEDDING_PROVIDER
+        value: openai
+      - key: SIMILARITY_TOP_K
+        value: "5"
+      - key: SIMILARITY_THRESHOLD
+        value: "0.75"
