@@ -2,7 +2,6 @@ services:
   - type: web
     name: finmentor
     runtime: python
-    rootDir: finmentor
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
@@ -28,7 +27,7 @@ services:
       - key: EMBEDDING_API_KEY
         sync: false
       - key: EMBEDDING_PROVIDER
-        value: openai
+        value: gemini
       - key: SIMILARITY_TOP_K
         value: "5"
       - key: SIMILARITY_THRESHOLD
